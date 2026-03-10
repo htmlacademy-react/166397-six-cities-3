@@ -1,4 +1,4 @@
-import Tab from '../tab/tab';
+import Tab from '../../ui/tab/tab';
 
 type Cities = 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
 

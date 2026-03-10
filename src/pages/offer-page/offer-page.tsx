@@ -1,4 +1,4 @@
-import Header from '../../components/header/header';
+import Header from '../../layout/header/header';
 import Reviews from '../../components/reviews/reviews';
 import Places from '../../components/places/places';
 import { reviews } from '../../mocks/reviews';

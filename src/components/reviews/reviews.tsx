@@ -1,19 +1,8 @@
-import Review from '../review/review';
-
-type Review = {
-  id: string;
-  date: string;
-  user: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
-  comment: string;
-  rating: number;
-}
+import Review from '../../ui/review/review';
+import { ReviewType } from '../../types/review-type';
 
 type ReviewsProps = {
-  reviews: Review[];
+  reviews: ReviewType[];
 }
 
 function Reviews({reviews}: ReviewsProps): JSX.Element {

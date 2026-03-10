@@ -1,3 +1,5 @@
+import { getRaitingPercentage, capitalizeValue } from '../../utils/common';
+
 type PlaceCardProps = {
   title: string;
   type: 'apartment' | 'room' | 'house' | 'hotel';
@@ -13,8 +15,8 @@ type PlaceCardProps = {
 }
 
 function PlaceCard({isPremium, previewImage, price, isFavorite, rating, title, type, className, imgClassName, width = 260, height = 200}: PlaceCardProps): JSX.Element {
-  const starWidth = `${Math.round(rating) / 5 * 100}%`;
-  const capitalizedType = type[0].toUpperCase() + type.slice(1, type.length);
+  const starsWidth = getRaitingPercentage(rating);
+  const capitalizedType = capitalizeValue(type);
 
   return (
     <article className={`${className} place-card`}>
@@ -42,7 +44,7 @@ function PlaceCard({isPremium, previewImage, price, isFavorite, rating, title, t
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: starWidth}}></span>
+            <span style={{width: starsWidth}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

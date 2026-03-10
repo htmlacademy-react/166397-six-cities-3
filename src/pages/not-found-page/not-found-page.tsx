@@ -1,4 +1,4 @@
-import Header from '../../components/header/header';
+import Header from '../../layout/header/header';
 
 function NotFoundPage(): JSX.Element {
   return (

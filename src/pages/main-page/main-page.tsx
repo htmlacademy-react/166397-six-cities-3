@@ -1,4 +1,4 @@
-import Header from '../../components/header/header';
+import Header from '../../layout/header/header';
 import Tabs from '../../components/tabs/tabs';
 import Places from '../../components/places/places';
 import Map from '../../components/map/map';

@@ -1,29 +1,6 @@
 import {PropsWithChildren} from 'react';
-import PlaceCard from '../place-card/place-card';
-
-type Offer = {
-  id: string;
-  title: string;
-  type: 'apartment' | 'room' | 'house' | 'hotel';
-  price: number;
-  city: {
-    name: string;
-    location: {
-      latitude: number;
-      longitude: number;
-      zoom: number;
-    };
-  };
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
-  isFavorite: boolean;
-  isPremium: boolean;
-  rating: number;
-  previewImage: string;
-};
+import PlaceCard from '../../ui/place-card/place-card';
+import { Offer } from '../../types/offer-type';
 
 type PlacesProps = PropsWithChildren<{
   offers: Offer[];

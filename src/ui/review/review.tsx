@@ -1,3 +1,5 @@
+import { getRaitingPercentage } from '../../utils/common';
+
 type ReviewProps = {
   date: string;
   user: {
@@ -11,7 +13,7 @@ type ReviewProps = {
 
 function Review({user, rating, comment, date}: ReviewProps): JSX.Element {
   const {avatarUrl, name} = user;
-  const starsWidth = `${Math.round(rating) / 5 * 100}%`;
+  const starsWidth = getRaitingPercentage(rating);
 
   return (
     <li className="reviews__item">

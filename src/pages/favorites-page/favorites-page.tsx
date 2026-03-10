@@ -1,8 +1,8 @@
-import Header from '../../components/header/header';
-import Footer from '../../components/footer/footer';
-import Tab from '../../components/tab/tab';
+import Header from '../../layout/header/header';
+import Footer from '../../layout/footer/footer';
+import Tab from '../../ui/tab/tab';
 import { offers } from '../../mocks/offers';
-import PlaceCard from '../../components/place-card/place-card';
+import PlaceCard from '../../ui/place-card/place-card';
 
 function FavoritesPage(): JSX.Element {
   return (
