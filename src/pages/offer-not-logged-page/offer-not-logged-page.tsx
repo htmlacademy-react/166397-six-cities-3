@@ -1,4 +1,4 @@
-function OfferPage(): JSX.Element {
+function OfferNotLoggedPage(): JSX.Element {
   return (
     <div className="page">
       <header className="header">
@@ -290,4 +290,4 @@ function OfferPage(): JSX.Element {
   );
 }
 
-export default OfferPage;
+export default OfferNotLoggedPage;
