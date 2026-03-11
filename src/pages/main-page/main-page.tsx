@@ -54,7 +54,6 @@ function MainPage({placesCount}: MainPageProps): JSX.Element {
         </div>
       </main>
     </div>
-
   );
 }
 
