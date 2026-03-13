@@ -19,7 +19,10 @@ function App({placesCount}: AppProps): JSX.Element {
         <Routes>
           <Route path={AppRoute.Root} element={<MainPage placesCount={placesCount}/>} />
           <Route path={AppRoute.Login} element={<LoginPage />} />
-          <Route path={AppRoute.Offer} element={<OfferPage />} />
+          <Route path={AppRoute.Offer}>
+            <Route index element = {<OfferPage />} />
+            <Route path=':id' element={<OfferPage />} />
+          </Route>
           <Route path={AppRoute.Favorites} element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
               <FavoritesPage />
