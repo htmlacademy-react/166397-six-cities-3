@@ -1,17 +1,17 @@
 import { Outlet, useLocation } from 'react-router-dom';
+import { getAuthorizationStatus } from '../../authorization-status';
+import { AuthorizationStatus } from '../../const';
 import Header from '../header/header';
 import Footer from '../footer/footer';
 import { AppRoute } from '../../const';
 
-type PageWrapperProps = {
-  isUserSignIn: boolean;
-}
+const authorizationStatus: AuthorizationStatus = getAuthorizationStatus();
 
-function PageWrapper({isUserSignIn}: PageWrapperProps): JSX.Element {
+function PageWrapper(): JSX.Element {
   const {pathname} = useLocation();
   let pageClassName = '';
   let mainClassName = '';
-  let isFooter = false;
+  let hasFooter = false;
   let shouldRenderUser = true;
 
   switch (pathname as AppRoute) {
@@ -30,7 +30,7 @@ function PageWrapper({isUserSignIn}: PageWrapperProps): JSX.Element {
 
     case AppRoute.Favorites:
       mainClassName = 'page__main--favorites';
-      isFooter = true;
+      hasFooter = true;
       break;
 
     case AppRoute.Offer:
@@ -41,13 +41,13 @@ function PageWrapper({isUserSignIn}: PageWrapperProps): JSX.Element {
 
   return (
     <div className={`page ${pageClassName}`}>
-      <Header isUserSignIn={isUserSignIn} shouldRenderUser={shouldRenderUser} />
+      <Header isUserSignIn={authorizationStatus === AuthorizationStatus.Auth} shouldRenderUser={shouldRenderUser} />
 
       <main className={`page__main ${mainClassName}`}>
         <Outlet />
       </main>
 
-      {isFooter && <Footer/>}
+      {hasFooter && <Footer/>}
     </div>
   );
 }
