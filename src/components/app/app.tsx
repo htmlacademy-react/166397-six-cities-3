@@ -31,7 +31,7 @@ function App({placesCount, offers}: AppProps): JSX.Element {
               </PrivateRoute>
             }
             />
-            <Route path={AppRoute.Offer} element={<OfferPage />} />
+            <Route path={AppRoute.Offer} element={<OfferPage isUserSignIn={authorizationStatus === AuthorizationStatus.Auth} />} />
             <Route path={AppRoute.Favorites} element={
               <PrivateRoute isAvailable={authorizationStatus === AuthorizationStatus.Auth} route={AppRoute.Login}>
                 <FavoritesPage offers={offers} />
