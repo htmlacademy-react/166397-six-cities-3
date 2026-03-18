@@ -1,14 +1,15 @@
 import {Helmet} from 'react-helmet-async';
+import { Offer } from '../../types/offer-type';
 import Tabs from '../../components/tabs/tabs';
 import Places from '../../components/places/places';
 import Map from '../../components/map/map';
-import { offers } from '../../mocks/offers';
 
 type MainPageProps = {
   placesCount: number;
+  offers: Offer[];
 }
 
-function MainPage({placesCount}: MainPageProps): JSX.Element {
+function MainPage({placesCount, offers}: MainPageProps): JSX.Element {
   return (
     <>
       <Helmet>

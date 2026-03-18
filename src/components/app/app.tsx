@@ -2,6 +2,7 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../authorization-status';
+import { Offer } from '../../types/offer-type';
 import MainPage from '../../pages/main-page/main-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
@@ -12,17 +13,18 @@ import PageWrapper from '../../layout/page-wrapper/page-wrapper';
 
 type AppProps = {
   placesCount: number;
+  offers: Offer[];
 }
 
 const authorizationStatus: AuthorizationStatus = getAuthorizationStatus();
 
-function App({placesCount}: AppProps): JSX.Element {
+function App({placesCount, offers}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Root} element={<PageWrapper />}>
-            <Route index element={<MainPage placesCount={placesCount}/>} />
+            <Route index element={<MainPage placesCount={placesCount} offers={offers}/>} />
             <Route path={AppRoute.Login} element={
               <PrivateRoute isAvailable={authorizationStatus === AuthorizationStatus.NoAuth} route={AppRoute.Root}>
                 <LoginPage />
