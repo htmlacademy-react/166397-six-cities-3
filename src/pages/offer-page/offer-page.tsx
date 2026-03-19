@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { NewReview } from '../../types/review-type';
 import Reviews from '../../components/reviews/reviews';
 import Places from '../../components/places/places';
 import ReviewForm from '../../components/review-form/review-form';
@@ -7,9 +8,10 @@ import { offers } from '../../mocks/offers';
 
 type OfferPageProps = {
   isUserSignIn?: boolean;
+  onSubmit: (review: NewReview) => void;
 }
 
-function OfferPage({isUserSignIn = false}: OfferPageProps): JSX.Element {
+function OfferPage({isUserSignIn = false, onSubmit}: OfferPageProps): JSX.Element {
   return (
     <>
       <Helmet>
@@ -146,7 +148,7 @@ function OfferPage({isUserSignIn = false}: OfferPageProps): JSX.Element {
               Reviews · <span className="reviews__amount">{reviews.length}</span>
               </h2>
               <Reviews reviews={reviews} />
-              {isUserSignIn && <ReviewForm />}
+              {isUserSignIn && <ReviewForm onSubmit={onSubmit} />}
             </section>
           </div>
         </div>

@@ -1,8 +1,14 @@
-import { Fragment, ReactEventHandler, useState } from 'react';
+import { Fragment, ReactEventHandler, FormEventHandler, useState } from 'react';
+import { NewReview } from '../../types/review-type';
 
 const MIN_REVIEW_LENGTH = 50;
 
+type ReviewFormProps = {
+  onSubmit: (review: NewReview) => void;
+}
+
 type ChangeHandler = ReactEventHandler<HTMLInputElement | HTMLTextAreaElement>
+type SubmitHandler = FormEventHandler<HTMLFormElement>
 
 const raitingValues = [
   {
@@ -27,8 +33,13 @@ const raitingValues = [
   }
 ];
 
-function ReviewForm(): JSX.Element {
+function ReviewForm({onSubmit}: ReviewFormProps): JSX.Element {
   const [userReview, setUserReview] = useState({rating: 0, review: ''});
+
+  const handleFormSubmit: SubmitHandler = (evt) => {
+    evt.preventDefault();
+    onSubmit(userReview);
+  };
 
   const handleRaitingChange: ChangeHandler = (evt) => {
     setUserReview({
@@ -41,7 +52,7 @@ function ReviewForm(): JSX.Element {
   console.log(userReview);
 
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
