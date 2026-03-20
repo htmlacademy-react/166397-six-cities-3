@@ -1,7 +1,6 @@
 import { Fragment, ReactEventHandler, FormEventHandler, useState } from 'react';
+import { ReviewLength } from '../../const';
 import { NewReview } from '../../types/review-type';
-
-const MIN_REVIEW_LENGTH = 50;
 
 type ReviewFormProps = {
   onSubmit: (review: NewReview) => void;
@@ -96,7 +95,7 @@ function ReviewForm({onSubmit}: ReviewFormProps): JSX.Element {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={userReview.review.length < MIN_REVIEW_LENGTH || userReview.rating === 0}
+          disabled={userReview.review.length < ReviewLength.Min || userReview.review.length >= ReviewLength.Max || userReview.rating === 0}
         >
           Submit
         </button>
