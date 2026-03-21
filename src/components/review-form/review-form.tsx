@@ -32,7 +32,7 @@ const raitingValues = [
   }
 ];
 
-function ReviewForm({onSubmit}: ReviewFormProps): JSX.Element {
+const ReviewForm = ({onSubmit}: ReviewFormProps): JSX.Element => {
   const [userReview, setUserReview] = useState({rating: 0, review: ''});
 
   const handleFormSubmit: SubmitHandler = (evt) => {
@@ -102,6 +102,6 @@ function ReviewForm({onSubmit}: ReviewFormProps): JSX.Element {
       </div>
     </form>
   );
-}
+};
 
 export default ReviewForm;

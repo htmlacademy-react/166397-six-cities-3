@@ -6,10 +6,8 @@ type PrivateRouteProps = {
   children: JSX.Element;
 }
 
-function PrivateRoute({isAvailable, route, children}: PrivateRouteProps): JSX.Element {
-  return (
-    isAvailable ? children : <Navigate to={route} />
-  );
-}
+const PrivateRoute = ({isAvailable, route, children}: PrivateRouteProps): JSX.Element => (
+  isAvailable ? children : <Navigate to={route} />
+);
 
 export default PrivateRoute;

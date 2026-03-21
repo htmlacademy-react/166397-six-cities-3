@@ -8,8 +8,7 @@ type TabProp = {
   tag?: ElementType;
 }
 
-function Tab({name, className, tag}: TabProp): JSX.Element {
-
+const Tab = ({name, className, tag}: TabProp): JSX.Element => {
   const Tag = tag || 'div';
 
   return (
@@ -19,6 +18,6 @@ function Tab({name, className, tag}: TabProp): JSX.Element {
       </Link>
     </Tag>
   );
-}
+};
 
 export default Tab;

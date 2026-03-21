@@ -8,15 +8,14 @@ type HeaderProps = {
   isUserSignIn: boolean;
 }
 
-function Header({isUserSignIn, shouldRenderUser = true}: HeaderProps): JSX.Element {
-  return (
-    <header className="header">
-      <div className="container">
-        <div className="header__wrapper">
-          <div className="header__left">
-            <Logo className="header__logo-link header__logo-link--active" imgClassName="header__logo" />
-          </div>
-          {shouldRenderUser &&
+const Header = ({isUserSignIn, shouldRenderUser = true}: HeaderProps): JSX.Element => (
+  <header className="header">
+    <div className="container">
+      <div className="header__wrapper">
+        <div className="header__left">
+          <Logo className="header__logo-link header__logo-link--active" imgClassName="header__logo" />
+        </div>
+        {shouldRenderUser &&
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
@@ -43,10 +42,9 @@ function Header({isUserSignIn, shouldRenderUser = true}: HeaderProps): JSX.Eleme
                 </li>}
               </ul>
             </nav>}
-        </div>
       </div>
-    </header>
-  );
-}
+    </div>
+  </header>
+);
 
 export default Header;

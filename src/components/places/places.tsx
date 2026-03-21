@@ -11,7 +11,7 @@ type PlacesProps = PropsWithChildren<{
   imgClassName: string;
 }>;
 
-function Places({ offers, className, listClassName, cardClassName, imgClassName, children}: PlacesProps): JSX.Element {
+const Places = ({ offers, className, listClassName, cardClassName, imgClassName, children}: PlacesProps): JSX.Element => {
   const [activeCard, setActiveCard] = useState<Nullable<Offer>>(null);
 
   const handleActiveCardChange = (offer?: Offer): void => {
@@ -34,6 +34,6 @@ function Places({ offers, className, listClassName, cardClassName, imgClassName,
       </div>
     </section>
   );
-}
+};
 
 export default Places;

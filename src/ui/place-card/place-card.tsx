@@ -11,7 +11,7 @@ type PlaceCardProps = {
   handleActiveCardChange?: (offer?: Offer) => void;
 }
 
-function PlaceCard({offer, className, imgClassName, imgWidth = 260, imgHeight = 200, handleActiveCardChange}: PlaceCardProps): JSX.Element {
+const PlaceCard = ({offer, className, imgClassName, imgWidth = 260, imgHeight = 200, handleActiveCardChange}: PlaceCardProps): JSX.Element => {
   const {id, isPremium, previewImage, price, isFavorite, rating, title, type} = offer;
   const starsWidth = getRaitingPercentage(rating);
   const capitalizedType = capitalizeValue(type);
@@ -65,6 +65,6 @@ function PlaceCard({offer, className, imgClassName, imgWidth = 260, imgHeight = 
       </div>
     </article>
   );
-}
+};
 
 export default PlaceCard;

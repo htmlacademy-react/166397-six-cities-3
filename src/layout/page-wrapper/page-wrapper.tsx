@@ -7,7 +7,7 @@ import { AppRoute } from '../../const';
 
 const authorizationStatus: AuthorizationStatus = getAuthorizationStatus();
 
-function PageWrapper(): JSX.Element {
+const PageWrapper = (): JSX.Element => {
   const {pathname} = useLocation();
   let pageClassName = '';
   let mainClassName = '';
@@ -50,6 +50,6 @@ function PageWrapper(): JSX.Element {
       {hasFooter && <Footer/>}
     </div>
   );
-}
+};
 
 export default PageWrapper;

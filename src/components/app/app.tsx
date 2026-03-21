@@ -18,40 +18,38 @@ type AppProps = {
 
 const authorizationStatus: AuthorizationStatus = getAuthorizationStatus();
 
-function App({placesCount, offers}: AppProps): JSX.Element {
-  return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path={AppRoute.Root} element={<PageWrapper />}>
-            <Route index element={<MainPage placesCount={placesCount} offers={offers} />} />
-            <Route path={AppRoute.Login} element={
-              <PrivateRoute isAvailable={authorizationStatus === AuthorizationStatus.NoAuth} route={AppRoute.Root}>
-                <LoginPage />
-              </PrivateRoute>
-            }
-            />
+const App = ({placesCount, offers}: AppProps): JSX.Element => (
+  <HelmetProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path={AppRoute.Root} element={<PageWrapper />}>
+          <Route index element={<MainPage placesCount={placesCount} offers={offers} />} />
+          <Route path={AppRoute.Login} element={
+            <PrivateRoute isAvailable={authorizationStatus === AuthorizationStatus.NoAuth} route={AppRoute.Root}>
+              <LoginPage />
+            </PrivateRoute>
+          }
+          />
 
-            <Route path={AppRoute.Offer} element={
-              <OfferPage isUserSignIn={authorizationStatus === AuthorizationStatus.Auth} onSubmit={
+          <Route path={AppRoute.Offer} element={
+            <OfferPage isUserSignIn={authorizationStatus === AuthorizationStatus.Auth} onSubmit={
               // eslint-disable-next-line no-console
-                (review) => console.log(review)
-              }
-              />
+              (review) => console.log(review)
             }
             />
-            <Route path={AppRoute.Favorites} element={
-              <PrivateRoute isAvailable={authorizationStatus === AuthorizationStatus.Auth} route={AppRoute.Login}>
-                <FavoritesPage offers={offers} />
-              </PrivateRoute>
-            }
-            />
-            <Route path='*' element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </HelmetProvider>
-  );
-}
+          }
+          />
+          <Route path={AppRoute.Favorites} element={
+            <PrivateRoute isAvailable={authorizationStatus === AuthorizationStatus.Auth} route={AppRoute.Login}>
+              <FavoritesPage offers={offers} />
+            </PrivateRoute>
+          }
+          />
+          <Route path='*' element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </HelmetProvider>
+);
 
 export default App;
