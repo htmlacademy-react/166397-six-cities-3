@@ -1,18 +1,18 @@
 import { Helmet } from 'react-helmet-async';
-import { NewReview } from '../../types/review-type';
+import { NewReview, ReviewType } from '../../types/review-type';
 import Reviews from '../../components/reviews/reviews';
 import Places from '../../components/places/places';
 import ReviewForm from '../../components/review-form/review-form';
-import { reviews } from '../../mocks/reviews';
 import { offers } from '../../mocks/offers';
 import { AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../authorizationStatus';
 
 type OfferPageProps = {
   onSubmit: (review: NewReview) => void;
+  reviews: ReviewType[];
 }
 
-const OfferPage = ({onSubmit}: OfferPageProps): JSX.Element => {
+const OfferPage = ({onSubmit, reviews}: OfferPageProps): JSX.Element => {
   const authorizationStatus = getAuthorizationStatus();
   const isUserSignIn = authorizationStatus === AuthorizationStatus.Auth;
 

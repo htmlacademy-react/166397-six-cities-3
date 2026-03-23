@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../authorizationStatus';
 import { Offer } from '../../types/offer-type';
+import { ReviewType } from '../../types/review-type';
 import MainPage from '../../pages/main-page/main-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
@@ -14,11 +15,12 @@ import PageWrapper from '../../layout/page-wrapper/page-wrapper';
 type AppProps = {
   placesCount: number;
   offers: Offer[];
+  reviews: ReviewType[];
 }
 
 const authorizationStatus: AuthorizationStatus = getAuthorizationStatus();
 
-const App = ({placesCount, offers}: AppProps): JSX.Element => (
+const App = ({placesCount, offers, reviews}: AppProps): JSX.Element => (
   <HelmetProvider>
     <BrowserRouter>
       <Routes>
@@ -36,6 +38,7 @@ const App = ({placesCount, offers}: AppProps): JSX.Element => (
               // eslint-disable-next-line no-console
               (review) => console.log(review)
             }
+            reviews={reviews}
             />
           }
           />
