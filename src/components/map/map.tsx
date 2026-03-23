@@ -14,13 +14,13 @@ type MapProps = {
 const currentCustomIcon = new Icon({
   iconUrl: 'img/pin-active.svg',
   iconSize: [27, 39],
-  iconAnchor: [20, 20]
+  iconAnchor: [14, 39]
 });
 
 const defaultCustomIcon = new Icon({
   iconUrl: 'img/pin.svg',
   iconSize: [27, 39],
-  iconAnchor: [20, 20]
+  iconAnchor: [14, 39]
 });
 
 const Map = ({offers, activeOffer, className}: MapProps): JSX.Element => {
