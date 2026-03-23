@@ -4,8 +4,10 @@ import Reviews from '../../components/reviews/reviews';
 import Places from '../../components/places/places';
 import ReviewForm from '../../components/review-form/review-form';
 import { offers } from '../../mocks/offers';
-import { AuthorizationStatus } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../authorizationStatus';
+import Map from '../../components/map/map';
+import { useLocation } from 'react-router-dom';
 
 type OfferPageProps = {
   onSubmit: (review: NewReview) => void;
@@ -13,8 +15,10 @@ type OfferPageProps = {
 }
 
 const OfferPage = ({onSubmit, reviews}: OfferPageProps): JSX.Element => {
+  const {pathname} = useLocation();
   const authorizationStatus = getAuthorizationStatus();
   const isUserSignIn = authorizationStatus === AuthorizationStatus.Auth;
+  const activeOffer = offers.find((offer) => offer.id === pathname.replace(AppRoute.Offer.replace(':id', ''), ''));
 
   return (
     <>
@@ -156,7 +160,7 @@ const OfferPage = ({onSubmit, reviews}: OfferPageProps): JSX.Element => {
             </section>
           </div>
         </div>
-        <section className="offer__map map" />
+        <Map className="offer__map" offers={offers.slice(0, 3)} activeOffer={activeOffer} />
       </section>
       <div className="container">
         <Places className="near-places" imgClassName="near-places__image-wrapper" listClassName="near-places__list" cardClassName="near-places__card" offers={offers.slice(0, 3)}>
