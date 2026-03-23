@@ -39,6 +39,7 @@ const App = ({placesCount, offers, reviews}: AppProps): JSX.Element => (
               (review) => console.log(review)
             }
             reviews={reviews}
+            offers={offers}
             />
           }
           />

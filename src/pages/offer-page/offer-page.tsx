@@ -3,18 +3,19 @@ import { NewReview, ReviewType } from '../../types/review-type';
 import Reviews from '../../components/reviews/reviews';
 import Places from '../../components/places/places';
 import ReviewForm from '../../components/review-form/review-form';
-import { offers } from '../../mocks/offers';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../authorizationStatus';
 import Map from '../../components/map/map';
 import { useLocation } from 'react-router-dom';
+import { Offer } from '../../types/offer-type';
 
 type OfferPageProps = {
   onSubmit: (review: NewReview) => void;
   reviews: ReviewType[];
+  offers: Offer[];
 }
 
-const OfferPage = ({onSubmit, reviews}: OfferPageProps): JSX.Element => {
+const OfferPage = ({onSubmit, reviews, offers}: OfferPageProps): JSX.Element => {
   const {pathname} = useLocation();
   const authorizationStatus = getAuthorizationStatus();
   const isUserSignIn = authorizationStatus === AuthorizationStatus.Auth;
