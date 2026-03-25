@@ -50,8 +50,7 @@ const Map = ({offers, activeOffer, className}: MapProps): JSX.Element => {
   }, [map, offers, activeOffer]);
 
   return (
-    <section className={`${className} map`} ref={mapRef}>
-    </section>
+    <section className={`${className} map`} ref={mapRef} />
   );
 };
 
