@@ -55,10 +55,6 @@ const Map = ({offers, activeOffer, city, className}: MapProps): JSX.Element => {
 
         marker.setIcon(activeOffer && offer.id === activeOffer.id ? currentCustomIcon : defaultCustomIcon).addTo(markerLayer.current);
       });
-
-      return () => {
-        map.removeLayer(markerLayer.current);
-      };
     }
   }, [map, offers, activeOffer]);
 
