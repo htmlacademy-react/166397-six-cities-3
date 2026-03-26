@@ -59,7 +59,7 @@ const MainPage = ({placesCount, offers}: MainPageProps): JSX.Element => {
             </form>
           </Places>
           <div className="cities__right-section">
-            <Map activeOffer={activeOffer} offers={offers} className='cities__map' />
+            <Map className='cities__map' activeOffer={activeOffer} offers={offers} city={offers[0].city} />
           </div>
         </div>
       </div>

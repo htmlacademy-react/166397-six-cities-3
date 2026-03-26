@@ -131,7 +131,7 @@ const OfferPage = ({onSubmit, reviews, offers}: OfferPageProps): JSX.Element => 
             </section>
           </div>
         </div>
-        <Map className="offer__map" offers={visibleOffers} activeOffer={activeOffer} />
+        <Map className="offer__map" offers={visibleOffers} activeOffer={activeOffer} city={pageOffer.city} />
       </section>
       <div className="container">
         <Places className="near-places" imgClassName="near-places__image-wrapper" listClassName="near-places__list" cardClassName="near-places__card" offers={nearOffers}>

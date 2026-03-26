@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Offer } from '../../types/offer-type';
+import { City, Offer } from '../../types/offer-type';
 import useMap from '../../hooks/use-map';
 import { layerGroup, Marker, Icon } from 'leaflet';
 import { Nullable } from 'vitest';
@@ -8,6 +8,7 @@ import 'leaflet/dist/leaflet.css';
 type MapProps = {
   offers: Offer[];
   activeOffer: Nullable<Offer>;
+  city: City;
   className?: string;
 }
 
@@ -23,9 +24,9 @@ const defaultCustomIcon = new Icon({
   iconAnchor: [14, 39]
 });
 
-const Map = ({offers, activeOffer, className}: MapProps): JSX.Element => {
+const Map = ({offers, activeOffer, city, className}: MapProps): JSX.Element => {
   const mapRef = useRef(null);
-  const map = useMap(mapRef, offers[0].city);
+  const map = useMap(mapRef, city);
 
   useEffect(() => {
     if (map) {
