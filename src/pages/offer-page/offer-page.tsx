@@ -12,6 +12,7 @@ import { offer as pageOffer } from '../../mocks/offer';
 import { capitalizeValue, getRaitingPercentage } from '../../utils/common';
 import { reviews } from '../../mocks/reviews';
 import { offers } from '../../mocks/offers';
+import FavoriteButton from '../../ui/favorite-button/favorite-button';
 
 const MAX_PHOTOS_COUNT = 6;
 
@@ -63,12 +64,7 @@ const OfferPage = (): JSX.Element => {
               <h1 className="offer__name">
                 {pageOffer.title}
               </h1>
-              <button className={`offer__bookmark-button ${pageOffer.isFavorite && 'offer__bookmark-button--active'} button`} type="button">
-                <svg className="offer__bookmark-icon" width={31} height={33}>
-                  <use xlinkHref="#icon-bookmark" />
-                </svg>
-                <span className="visually-hidden">To bookmarks</span>
-              </button>
+              <FavoriteButton isFavorite={pageOffer.isFavorite} className='offer__bookmark-button' activeClassName='offer__bookmark-button--active' svgClassName='offer__bookmark-icon' />
             </div>
             <div className="offer__rating rating">
               <div className="offer__stars rating__stars">
