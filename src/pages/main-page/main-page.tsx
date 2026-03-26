@@ -5,13 +5,13 @@ import Places from '../../components/places/places';
 import Map from '../../components/map/map';
 import { useState } from 'react';
 import { Nullable } from 'vitest';
+import { offers } from '../../mocks/offers';
 
 type MainPageProps = {
   placesCount: number;
-  offers: Offer[];
 }
 
-const MainPage = ({placesCount, offers}: MainPageProps): JSX.Element => {
+const MainPage = ({placesCount}: MainPageProps): JSX.Element => {
   const [activeOffer, setActiveOffer] = useState<Nullable<Offer>>(null);
 
   const handleActiveCardChange = (offer?: Offer): void => {
@@ -59,7 +59,7 @@ const MainPage = ({placesCount, offers}: MainPageProps): JSX.Element => {
             </form>
           </Places>
           <div className="cities__right-section">
-            <Map activeOffer={activeOffer} offers={offers} className='cities__map' />
+            <Map className='cities__map' activeOffer={activeOffer} offers={offers} city={offers[0].city} />
           </div>
         </div>
       </div>
