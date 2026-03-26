@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { NewReview, ReviewType } from '../../types/review-type';
+import { NewReview } from '../../types/review-type';
 import Reviews from '../../components/reviews/reviews';
 import Places from '../../components/places/places';
 import ReviewForm from '../../components/review-form/review-form';
@@ -7,23 +7,25 @@ import { AuthorizationStatus } from '../../const';
 import { getAuthorizationStatus } from '../../authorizationStatus';
 import Map from '../../components/map/map';
 import { useParams } from 'react-router-dom';
-import { Offer } from '../../types/offer-type';
 import NotFoundPage from '../not-found-page/not-found-page';
 import { offer as pageOffer } from '../../mocks/offer';
 import { capitalizeValue, getRaitingPercentage } from '../../utils/common';
+import { reviews } from '../../mocks/reviews';
+import { offers } from '../../mocks/offers';
 
-type OfferPageProps = {
-  onSubmit: (review: NewReview) => void;
-  reviews: ReviewType[];
-  offers: Offer[];
-}
+const MAX_PHOTOS_COUNT = 6;
 
-const OfferPage = ({onSubmit, reviews, offers}: OfferPageProps): JSX.Element => {
+const OfferPage = (): JSX.Element => {
   const {id: offerId} = useParams();
   const authorizationStatus = getAuthorizationStatus();
   const isUserSignIn = authorizationStatus === AuthorizationStatus.Auth;
   const activeOffer = offers.find((offer) => offer.id === offerId);
   const starsWidth = getRaitingPercentage(pageOffer.rating);
+
+  const handleFormSubmit = (review: NewReview): void => {
+    // eslint-disable-next-line no-console
+    console.log(review);
+  };
 
   if (!activeOffer) {
     return <NotFoundPage />;
@@ -48,7 +50,7 @@ const OfferPage = ({onSubmit, reviews, offers}: OfferPageProps): JSX.Element => 
                   alt="Photo studio"
                 />
               </div>
-            )).slice(0, 6)}
+            )).slice(0, MAX_PHOTOS_COUNT)}
           </div>
         </div>
         <div className="offer__container container">
@@ -127,7 +129,7 @@ const OfferPage = ({onSubmit, reviews, offers}: OfferPageProps): JSX.Element => 
               Reviews · <span className="reviews__amount">{reviews.length}</span>
               </h2>
               {reviews?.length && <Reviews reviews={reviews} />}
-              {isUserSignIn && <ReviewForm onSubmit={onSubmit} />}
+              {isUserSignIn && <ReviewForm onSubmit={handleFormSubmit} />}
             </section>
           </div>
         </div>
